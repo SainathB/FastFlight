@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block body %}
+<div id="main" class="container">
+	Flights from {{ from_city.name }} to {{ to_city.name }}
+    <h3>Select flight:</h3>
+    <table class="table">
+    	<tr><th>Name</th><th>Day</th></tr>
+	    {% for flight in flights %}
+	    	<tr><td>{{ flight.name }}</td><td></td></tr>
+	    {% endfor %}
+	</table>
+</div>
+{% endblock %}

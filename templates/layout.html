@@ -1,0 +1,69 @@
+<!doctype html>
+<title>Fast Flight</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<style>
+body {
+	//padding-top: 60px;
+	padding-bottom: 100px;
+}
+</style>
+<link href="/static/css/bootstrap.css" rel="stylesheet">
+<link href="/static/css/fontawesome.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="/static/css/theme.bootstrap.css" rel="stylesheet">
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/jquery.tablesorter.js"></script>
+<script src="/static/js/jquery.tablesorter.widgets.js"></script>
+<link rel="stylesheet" href="/static/css/jquery.tablesorter.pager.css">
+<script src="/static/js/jquery.tablesorter.pager.js"></script>
+<script src="/static/js/typeahead.bundle.js"></script>
+<link rel="stylesheet" href="/static/css/themes/classic.css" id="theme_base">
+<link rel="stylesheet" href="/static/css/themes/classic.date.css" id="theme_date">
+    <script src="/static/js/picker.js"></script>
+    <script src="/static/js/picker.date.js"></script>
+    <script src="/static/js/legacy.js"></script>
+
+
+<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				 <div class="navbar-header">
+				<a class="navbar-brand" href="/">Fast Flight</a>
+				</div>
+				<div class="nav-collapse">
+					<ul class="nav navbar-nav">
+					   {% if g.user.is_authenticated()%}
+                        {% endif %}
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+                        {% if g.user.is_authenticated()%}
+                            <li class="navbar-text">Welcome, {{g.user.username}}</li>
+							<li><div><a href="{{ url_for('logout') }}" class="btn navbar-btn btn-danger">Sign out</a></div></li>
+						{% endif %}
+						{% if not g.user.is_authenticated()%}
+							<li {% if request.path == "/login" %}class="active"{% endif %}><div><a class="btn navbar-btn btn-success" href="{{ url_for('login') }}">Sign in</a></div></li>
+						{% endif %}
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+</div>
+</nav>
+
+<div id="main" class="container">
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	  <div class="alert alert-success">
+		    <ul>
+		    {% for message in messages %}
+		      <li>{{ message }}</li>
+		    {% endfor %}
+		    </ul>
+		</div>
+	{% endif %}
+	{% endwith %}
+
+	{% block body %}{% endblock %}
+<div id="space" style="height:300px"></div>	
+<hr>
+</div>

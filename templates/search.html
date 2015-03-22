@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block body %}
+<div id="main" class="container">
+    <h3>Search for flights:</h3>
+  <form role="form"  class="form-horizontal" action="{{ url_for('select_flight') }}" method='post'>
+	<div class="row">
+  <div class="col-lg-5">
+ <label>From:</label>
+      <input type="text" name="city_from" class="form-control" placeholder="Enter a city" required>
+
+  </div><!-- /.col-lg-6 -->
+  <div class="col-lg-5">
+
+ <label>To:</label>
+      <input type="text" name="city_to" class="form-control" placeholder="Enter a city" required>
+
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+<br>
+<div class="row" >
+  <div class="col-lg-5">
+ <label>Date of Journey:</label>
+<div class="input-group">   
+   <input type="text" id="datepicker" name="date" class="form-control" placeholder="dd-mm-yyyy" required>
+		 <span class="input-group-addon">
+        <i class="fa fa-calendar"></i>
+    </span>
+  </div><!-- /.col-lg-6 -->
+</div>
+</div> <!-- /.row -->
+<br>
+<div class="row">
+<div class="col-lg-4">
+ <button type="submit" class="btn btn-lg btn-success">Search</button>
+</div>
+</div>
+</form> 
+</div>
+<script>
+$('#datepicker').pickadate({
+format: 'dd-mm-yyyy',
+formatSubmit: 'dd-mm-yyyy',
+editable: true,});
+</script>
+
+{% endblock %}

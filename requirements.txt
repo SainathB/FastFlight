@@ -1,0 +1,5 @@
+Flask
+Flask-SQLAlchemy
+flask-login
+flask-admin
+authomatic
